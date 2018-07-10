@@ -35,8 +35,8 @@ namespace gg{
 		
 		void listener(){//слушатель перемещений мышки/пальца
 			if (touch){
-			mem position
-			mem on relase position
+			mem on  position
+			mem on - relase position
 			}
 			
 				
@@ -86,7 +86,7 @@ namespace gg{
 				  POS.y = j;
 				  GEM.spawn(POS);//спавним один сверху
 				  for (y < MAX_X; y++){
-						GEM[y][j].fall(POS);
+						//GEM[y][j].fall(POS); фалл уже есть в  функции спавна
 						if (tryDestroy(POS, GEM[POS.x][POS.y].type)){//т.к. каждый упавший элемент - это задействованный игроком процесс, то необходимо инициировать процесс проверки каждого элемента и его уничтожение.
 							desroyer(POS, GEM[POS.x][POS.y].type);
 						}
