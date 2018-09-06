@@ -4,32 +4,29 @@ using UnityEngine;
 
 public class main_system : MonoBehaviour {//класс, отвечающий за проведение игры
 
+
+
 	// Use this for initialization
 	void Start () {
-		Initialization();
-		
+		draw_init();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		everyTime loop listener
+		everyTime loop movier
 	}	
 		
 		
-		bool slover(){ //решатель/подсказыватель. вызывать функцию только при совершении действий
+		bool after_change_slover(){ //
+			for (all){
+			if (tryDestroy(POS, type))
+				desroyer(POS, type);
+			}
 			bool t;
 			return t;
 			
 		}
-		
-		void listener(){//слушатель перемещений мышки/пальца
-			if (touch){
-			mem position
-			mem on relase position
-			}
-			
-				
-		}
+
 		
 		bool tryDestroy(POS, type){//смотрим можно ли уничножить ГЕМы нах-иеся рядом
 			bool r = false;
@@ -43,7 +40,7 @@ public class main_system : MonoBehaviour {//класс, отвечающий з�
 				if (type == GEM[POS.x+1][POS.y+1].type) || (type == GEM[POS.x-1][POS.y+1].type) (type == GEM[POS.x][POS.y+2].type)
 					r = true;
 				
-			}else if (type == GEM[POS.x+1][POS.y-1].type){
+			}else if (type == GEM[POS.x][POS.y-1].type){
 				if (type == GEM[POS.x+1][POS.y-1].type) || (type == GEM[POS.x-1][POS.y-1].type) (type == GEM[POS.x][POS.y-2].type)
 					r = true;
 				
@@ -51,22 +48,55 @@ public class main_system : MonoBehaviour {//класс, отвечающий з�
 			return r;
 		}
 		
-		void movier{//двигатель
+		void movier(){//двигатель//слушатель перемещений мышки/пальца
 			//bool result;
-			DO MOVE
+			drawer()
+			if (touch){
+				mem position
+				mem on relase position
+				type = GEM.position.type;
+			
+			DO MOVE//anim
 			if (tryDestroy(NEW_POSITION, type))
 				desroyer(NEW_POSITION, type);
 			else 
-				UNDO MOVE
+				UNDO MOVE//anim
+			}
 			
 			
 			
 			//return result;
 		}
 		
-		desroyer(POS, type){
-			//recursion с запоминанием всех уже задействованных эл-тов
+		void drawer(){ //отрисовщик
+			for (all){
+				if (check_empty){ 
+					SPAWN(POS);// в спаунере добавить, что тип гема меняется только при окончании его перемещения(падения)
+				}
+			}
 		}
+		
+		void desroyer(POS, type){
+			
+			change(pos.type = z);
+			//recursion с запоминанием всех уже задействованных эл-тов
+			if (type == GEM[POS.x-1][POS.y].type){
+				desroyer(GEM[POS.x-1][POS.y], type);
+			}
+			else if (type == GEM[POS.x+1][POS.y].type){
+				desroyer(GEM[POS.x+1][POS.y], type);
+			}
+			else if (type == GEM[POS.x][POS.y+1].type){
+				desroyer(GEM[POS.x][POS.y+1], type);
+			}
+			else if (type == GEM[POS.x][POS.y-1].type){
+				desroyer(GEM[POS.x][POS.y-1], type);
+			}
+			GEM.POS.dest_ani();
+			drawer();
+		}
+		
+		//запилить дест систем с замещением 
 		
 	}
 }
