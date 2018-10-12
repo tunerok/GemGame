@@ -71,7 +71,11 @@ public class main_system : MonoBehaviour {//класс, отвечающий з�
 		void drawer(){ //отрисовщик
 			for (all){
 				if (check_empty){ 
-					SPAWN(POS);// в спаунере добавить, что тип гема меняется только при окончании его перемещения(падения)
+					GEM[POS][POS] = new Gem(lvl, width, inverted)//спавним объект с его хар-ками.
+					if(GEM[POS][POS].SPAWN(POS))// в спаунере добавить, что тип гема меняется только при окончании его перемещения(падения)
+					{
+						continue;
+					}
 				}
 			}
 		}
@@ -81,18 +85,22 @@ public class main_system : MonoBehaviour {//класс, отвечающий з�
 			change(pos.type = z);
 			//recursion с запоминанием всех уже задействованных эл-тов
 			if (type == GEM[POS.x-1][POS.y].type){
+				GEM.POS.dest_ani();
 				desroyer(GEM[POS.x-1][POS.y], type);
 			}
 			else if (type == GEM[POS.x+1][POS.y].type){
+				GEM.POS.dest_ani();
 				desroyer(GEM[POS.x+1][POS.y], type);
 			}
 			else if (type == GEM[POS.x][POS.y+1].type){
+				GEM.POS.dest_ani();
 				desroyer(GEM[POS.x][POS.y+1], type);
 			}
 			else if (type == GEM[POS.x][POS.y-1].type){
+				GEM.POS.dest_ani();
 				desroyer(GEM[POS.x][POS.y-1], type);
 			}
-			GEM.POS.dest_ani();
+			
 			drawer();
 		}
 		

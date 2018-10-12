@@ -36,6 +36,13 @@ public class GEM : MonoBehaviour {
 		}
 		
 		void dest_anim(){
+			play_distroy_animation();
+			this.Delete();
+		}
+		
+		bool spawn(int pose_x, int pose_y){
+			move(from y_max,pose_x to pose_y,pose_x);
+			return true;
 			
 		}
 		
