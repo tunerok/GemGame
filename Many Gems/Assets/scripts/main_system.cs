@@ -50,7 +50,7 @@ public class main_system : MonoBehaviour {//класс, отвечающий з�
 		
 		void movier(){//двигатель//слушатель перемещений мышки/пальца
 			//bool result;
-			drawer()
+			drawer();
 			if (touch){
 				mem position
 				mem on relase position
